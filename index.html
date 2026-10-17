@@ -32,6 +32,10 @@
 <div id="cards"></div>
 <h3 style="margin:16px 0 8px;font-size:15px">观察/备选</h3>
 <table id="watch"></table>
+<h3 style="margin:16px 0 8px;font-size:15px">历史买卖收益（策略回测）</h3>
+<div class="top" id="hstats"></div>
+<div id="heq" style="background:#fff;border-radius:10px;padding:8px;margin-bottom:10px"></div>
+<table id="htrades"></table>
 <div class="foot">
  规则：次日开盘买（涨停/高开>5% 放弃）→ T+2 日 +4% 止盈 / -2% 止损 / 收盘了结；单票 15%-20%，总仓位 ≤80%。<br>
  行情：东方财富 JSONP（浏览器直连）；本页面仅供研究，不构成投资建议。
@@ -121,6 +125,36 @@ async function load(){
     document.getElementById("sub").textContent = "暂无数据：请确认 data/latest.json 已上传（首次使用请先运行 publish_github.py）";
   }
 }
+
+async function loadHistory(){
+  try{
+    const r = await fetch("./data/history.json", {cache:"no-store"});
+    if(!r.ok) return;
+    const h = await r.json(), st = h.stats || {};
+    document.getElementById("hstats").innerHTML = `
+      <div class="pill">总收益 <b>+${(st.total*100).toFixed(1)}%</b></div>
+      <div class="pill">年化 <b>${(st.cagr*100).toFixed(1)}%</b></div>
+      <div class="pill">最大回撤 <b>${(st.dd*100).toFixed(1)}%</b></div>
+      <div class="pill">批次胜率 <b>${(st.win*100).toFixed(0)}%</b></div>
+      <div class="pill">交易 <b>${st.trades||0}</b> 笔</div>`;
+    const eq = h.equity || [];
+    if(eq.length > 1){
+      const vals = eq.map(x=>x[1]), mn=Math.min(...vals), mx=Math.max(...vals), w=760,hgt=150;
+      const pts = vals.map((v,i)=>`${(i/(vals.length-1)*w).toFixed(1)},${(hgt-(v-mn)/((mx-mn)||1)*(hgt-16)-8).toFixed(1)}`).join(" ");
+      document.getElementById("heq").innerHTML =
+        `<svg viewBox="0 0 ${w} ${hgt}" preserveAspectRatio="none" style="width:100%;height:150px">`+
+        `<polyline points="${pts}" fill="none" stroke="#1f3b73" stroke-width="2"/></svg>`;
+    }
+    let rows = "<tr><th>信号日</th><th>名称</th><th>代码</th><th>行业</th><th>单笔收益</th></tr>";
+    for(const t of (h.recent||[]).slice(-12).reverse()){
+      const c = (t.ret_pct||0) >= 0 ? "#b91c1c" : "#15803d";
+      rows += `<tr><td>${t.date||""}</td><td>${t.name||""}</td><td>${t.code||""}</td><td>${t.industry||""}</td><td style="color:${c}">${(t.ret_pct||0).toFixed(2)}%</td></tr>`;
+    }
+    document.getElementById("htrades").innerHTML = rows;
+  }catch(e){}
+}
+loadHistory();
+
 load();
 </script>
 </body>
