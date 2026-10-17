@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A股低位反转·每日看板</title>
+<style>
+ body{font-family:"Microsoft YaHei",-apple-system,sans-serif;background:#f5f7fb;margin:0;padding:18px;color:#1f2937}
+ h1{font-size:20px;margin:0 0 4px} .sub{color:#6b7280;font-size:12px;margin-bottom:14px}
+ .top{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+ .pill{background:#fff;border-radius:10px;padding:10px 14px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:13px}
+ .pill b{font-size:16px} .weak{color:#b03a2e} .ok{color:#1f3b73}
+ .card{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.06);position:relative}
+ .rank{position:absolute;right:14px;top:10px;font-size:26px;color:#e5e7eb;font-weight:700}
+ .head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+ .name{font-size:17px;font-weight:700} .code{color:#6b7280;font-size:13px}
+ .tag{background:#eef2f8;border-radius:6px;padding:2px 8px;font-size:12px;color:#374151}
+ .status{margin-left:auto;font-size:12px;padding:3px 10px;border-radius:20px;color:#fff}
+ .blue{background:#1f3b73} .green{background:#15803d} .red{background:#b91c1c} .orange{background:#c2410c} .gray{background:#6b7280}
+ .line{margin:8px 0;font-size:13px;color:#374151}
+ .levels{display:flex;gap:14px;font-size:12px;flex-wrap:wrap} .stop b{color:#b91c1c} .target b{color:#15803d}
+ .meta{margin-top:6px;font-size:11px;color:#6b7280}
+ table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden}
+ th,td{padding:7px 8px;border-bottom:1px solid #eee;font-size:12px;text-align:center} th{background:#1f3b73;color:#fff}
+ .foot{margin-top:14px;font-size:11px;color:#9ca3af}
+</style>
+</head>
+<body>
+<h1>低位反转 · 每日看板</h1>
+<div class="sub" id="sub">加载中…</div>
+<div class="top" id="top"></div>
+<div id="cards"></div>
+<h3 style="margin:16px 0 8px;font-size:15px">观察/备选</h3>
+<table id="watch"></table>
+<div class="foot">
+ 规则：次日开盘买（涨停/高开>5% 放弃）→ T+2 日 +4% 止盈 / -2% 止损 / 收盘了结；单票 15%-20%，总仓位 ≤80%。<br>
+ 行情：东方财富 JSONP（浏览器直连）；本页面仅供研究，不构成投资建议。
+</div>
+<script>
+const qCache = {};
+function jsonpQuote(code, cb) {
+  const secid = (code.startsWith("60") || code.startsWith("68") ? "1." : "0.") + code;
+  const name = "cb_" + code + "_" + Math.floor(Math.random()*1e6);
+  window[name] = function (obj) {
+    try {
+      const d = obj && obj.data;
+      if (d) cb({price:d.f43/100, open:d.f46/100, high:d.f44/100, low:d.f45/100,
+                 prev:d.f60/100, pct:d.f170/100});
+    } catch(e) { cb(null); }
+    delete window[name];
+    script.remove();
+  };
+  const script = document.createElement("script");
+  script.src = `https://push2.eastmoney.com/api/qt/stock/get?secid=${secid}&fields=f43,f44,f45,f46,f60,f170&cb=${name}`;
+  script.onerror = () => { cb(null); script.remove(); };
+  document.body.appendChild(script);
+}
+function fmt(x){ return (x||x===0) ? x.toFixed(2) : "—"; }
+function statusOf(p, q, now){
+  const base = p.close;
+  if (!q || !q.open) return ["待行情","gray"];
+  const lim = (p.code.startsWith("300")||p.code.startsWith("301")) ? 0.195 : 0.098;
+  const gap = q.prev ? q.open/q.prev-1 : 0;
+  if (gap >= lim-0.005) return ["开盘涨停·放弃","red"];
+  if (gap > 0.05) return ["高开>5%·放弃","orange"];
+  const entry = q.open, stop = entry*0.98, target = entry*1.04, cur = q.price;
+  if (cur <= stop) return ["已触止损","red"];
+  if (cur >= target) return ["已触止盈","green"];
+  return ["可买/持有","blue"];
+}
+async function load(){
+  try {
+    const r = await fetch("./data/latest.json", {cache:"no-store"});
+    if (!r.ok) throw new Error("no data");
+    const data = await r.json();
+    const picks = data.picks || [], watch = data.watch || [], mkt = data.market || {};
+    document.getElementById("sub").textContent =
+      `信号日期 ${data.date||"—"}｜更新 ${new Date().toLocaleString("zh-CN")}｜数据每分钟自动刷新`;
+    const st = mkt.state || "—";
+    document.getElementById("top").innerHTML = `
+      <div class="pill">市场状态 <b class="${st==='强势'?'ok':'weak'}">${st}</b>（宽度 ${((mkt.breadth||0)*100).toFixed(0)}%）</div>
+      <div class="pill">今日推荐 <b>${picks.length}</b> 只</div>
+      <div class="pill">策略：5日跌>12% + 收阳 + 低位</div>`;
+    const cards = [];
+    for (let i=0;i<picks.length;i++){
+      const p = picks[i], q = qCache[p.code] || null;
+      const [status, color] = statusOf(p,q);
+      const entry = q && q.open ? q.open : p.close;
+      const stop = entry*0.98, target = entry*1.04;
+      const cur = q ? q.price : p.close;
+      const pct = q ? q.pct*100 : p.ret*100;
+      cards.push(`<div class="card">
+        <div class="rank">${i+1}</div>
+        <div class="head"><span class="name">${p.name}</span><span class="code">${p.code}</span>
+          <span class="tag">${p.industry||""}</span><span class="status ${color}">${status}</span></div>
+        <div class="line">${q?`开盘 ${fmt(q.open)}｜现价 ${fmt(cur)}（${pct>=0?'+':''}${pct.toFixed(1)}%）`:`昨收 ${fmt(p.close)}（${p.ret>=0?'+':''}${(p.ret*100).toFixed(1)}%）｜实时行情加载中`}</div>
+        <div class="levels">
+          <span>买入参考 <b>${fmt(entry)}</b></span>
+          <span class="stop">止损 <b>${fmt(stop)}</b>（-2%）</span>
+          <span class="target">止盈 <b>${fmt(target)}</b>（+4%）</span>
+        </div>
+        <div class="meta">5日 ${(p.ret5*100).toFixed(1)}%｜250分位 ${(p.pos250*100).toFixed(0)}%｜行业位置 ${(p.ind_pos*100).toFixed(0)}%｜RSI6 ${(p.rsi6||0).toFixed(0)}｜评分 ${(p.score||0).toFixed(0)}｜成交额 ${((p.amount||0)/1e8).toFixed(1)}亿</div>
+      </div>`);
+    }
+    document.getElementById("cards").innerHTML = cards.join("") || '<div class="card">今日无符合条件标的，空仓。</div>';
+    let rows = "<tr><th>名称</th><th>代码</th><th>行业</th><th>评分</th><th>昨收</th><th>今日</th></tr>";
+    for (const w of watch.slice(0,10)){
+      const q = qCache[w.code];
+      rows += `<tr><td>${w.name||""}</td><td>${w.code||""}</td><td>${w.industry||""}</td>
+        <td>${(w.score||0).toFixed(0)}</td><td>${fmt(w.close)}</td>
+        <td>${q?((q.pct*100>=0?'+':'')+(q.pct*100).toFixed(1)+'%'):'—'}</td></tr>`;
+    }
+    document.getElementById("watch").innerHTML = rows;
+    // 实时行情
+    picks.concat(watch.slice(0,10)).forEach(o => {
+      if (!o || !o.code) return;
+      jsonpQuote(o.code, q => { qCache[o.code] = q; });
+    });
+    setTimeout(load, 60000);
+  } catch(e) {
+    document.getElementById("sub").textContent = "暂无数据：请确认 data/latest.json 已上传（首次使用请先运行 publish_github.py）";
+  }
+}
+load();
+</script>
+</body>
+</html>
