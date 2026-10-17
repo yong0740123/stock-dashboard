@@ -5,157 +5,206 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>A股低位反转·每日看板</title>
 <style>
- body{font-family:"Microsoft YaHei",-apple-system,sans-serif;background:#f5f7fb;margin:0;padding:18px;color:#1f2937}
- h1{font-size:20px;margin:0 0 4px} .sub{color:#6b7280;font-size:12px;margin-bottom:14px}
- .top{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
- .pill{background:#fff;border-radius:10px;padding:10px 14px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:13px}
- .pill b{font-size:16px} .weak{color:#b03a2e} .ok{color:#1f3b73}
- .card{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.06);position:relative}
- .rank{position:absolute;right:14px;top:10px;font-size:26px;color:#e5e7eb;font-weight:700}
- .head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
- .name{font-size:17px;font-weight:700} .code{color:#6b7280;font-size:13px}
- .tag{background:#eef2f8;border-radius:6px;padding:2px 8px;font-size:12px;color:#374151}
- .status{margin-left:auto;font-size:12px;padding:3px 10px;border-radius:20px;color:#fff}
- .blue{background:#1f3b73} .green{background:#15803d} .red{background:#b91c1c} .orange{background:#c2410c} .gray{background:#6b7280}
- .line{margin:8px 0;font-size:13px;color:#374151}
- .levels{display:flex;gap:14px;font-size:12px;flex-wrap:wrap} .stop b{color:#b91c1c} .target b{color:#15803d}
- .meta{margin-top:6px;font-size:11px;color:#6b7280}
- table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden}
- th,td{padding:7px 8px;border-bottom:1px solid #eee;font-size:12px;text-align:center} th{background:#1f3b73;color:#fff}
+ body{font-family:"Microsoft YaHei",-apple-system,sans-serif;background:#f5f7fb;margin:0;padding:16px;color:#1f2937}
+ h1{font-size:19px;margin:0 0 4px} h3{font-size:15px;margin:18px 0 8px}
+ .sub{color:#6b7280;font-size:12px;margin-bottom:12px}
+ .top{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+ .pill{background:#fff;border-radius:10px;padding:9px 12px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:12px}
+ .pill b{font-size:15px} .weak{color:#b03a2e} .ok{color:#1f3b73}
+ .plan{background:#fff;border-left:4px solid #1f3b73;border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:13px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+ .plan b{color:#1f3b73}
+ .card{background:#fff;border-radius:12px;padding:13px 15px;margin-bottom:11px;box-shadow:0 1px 6px rgba(0,0,0,.06);position:relative}
+ .rank{position:absolute;right:13px;top:9px;font-size:24px;color:#e5e7eb;font-weight:700}
+ .head{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+ .name{font-size:16px;font-weight:700} .code{color:#6b7280;font-size:12px}
+ .tag{background:#eef2f8;border-radius:6px;padding:2px 7px;font-size:11px;color:#374151}
+ .status{margin-left:auto;font-size:11px;padding:3px 9px;border-radius:20px;color:#fff}
+ .blue{background:#1f3b73}.green{background:#15803d}.red{background:#b91c1c}.orange{background:#c2410c}.gray{background:#6b7280}
+ .line{margin:7px 0;font-size:12.5px;color:#374151}
+ .levels{display:flex;gap:12px;font-size:12px;flex-wrap:wrap}.stop b{color:#b91c1c}.target b{color:#15803d}
+ .ret{margin-top:5px;font-size:12px;font-weight:700}
+ .meta{margin-top:5px;font-size:11px;color:#6b7280}
+ table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;margin-top:6px}
+ th,td{padding:6px 7px;border-bottom:1px solid #eee;font-size:11.5px;text-align:center} th{background:#1f3b73;color:#fff}
  .foot{margin-top:14px;font-size:11px;color:#9ca3af}
 </style>
 </head>
 <body>
+<script>window.__PICKS__={"date":"2026-10-16","market":{"above20":false,"above60":false,"breadth":0.22075529628492477,"state":"弱势"},"picks":[{"code":"002487","name":"大金重工","industry":"电力设备","close":35.79,"open":35.76,"high":37.55,"low":34.34,"ret":0.013306908267270545,"ret5":-0.18194285714285718,"pos250":0.06034760218860637,"ind_pos":0.0067992219424830545,"ind_ret20":-0.08015725501878712,"ind_breadth":0.09814323607427056,"rsi6":33.326308799645616,"kdj_j":-14.545160803924418,"score":67.0,"amount":2653672616.51,"nearest_sup":-0.08242525845208148,"dist_ma60":-0.08024019805203142,"is_limit_up":false,"limit_th":0.098,"close_pos":0.45171339563862883,"volr":0.7615327213266326,"body":0.0008493771234428408},{"code":"603538","name":"美诺华","industry":"医药生物","close":23.85,"open":23.71,"high":24.88,"low":23.47,"ret":0.022727272727272707,"ret5":-0.16168717047451664,"pos250":0.09490470633994559,"ind_pos":0.32442710480733217,"ind_ret20":-0.018571130594434382,"ind_breadth":0.20292887029288703,"rsi6":31.849256820147673,"kdj_j":-9.624500254659864,"score":52.0,"amount":886999700.0,"nearest_sup":-0.02683438155136275,"dist_ma60":-0.1354571323276199,"is_limit_up":false,"limit_th":0.098,"close_pos":0.26950354609929256,"volr":0.8128955180738152,"body":0.0060034305317324425},{"code":"002565","name":"顺灏股份","industry":"轻工制造","close":8.03,"open":7.86,"high":8.37,"low":7.68,"ret":0.026854219948849067,"ret5":-0.149364406779661,"pos250":0.08783382789317505,"ind_pos":0.2352311619123756,"ind_ret20":-0.04194673748094291,"ind_breadth":0.175,"rsi6":35.45899149083047,"kdj_j":3.420680098416099,"score":64.0,"amount":870497304.38,"nearest_sup":-0.01597068916198241,"dist_ma60":-0.09063455513193153,"is_limit_up":false,"limit_th":0.098,"close_pos":0.507246376811594,"volr":0.870821254751175,"body":0.021739130434782487}],"watch":[{"code":"002064","name":"华峰化学","industry":"基础化工","score":63.0,"close":8.96,"ret":0.011286681715575675,"ret5":-0.1215686274509803,"pos250":0.10035842293906819,"ind_pos":0.11618261329438964},{"code":"002553","name":"南方精工","industry":"汽车","score":61.0,"close":14.5,"ret":0.0386819484240688,"ret5":-0.1317365269461077,"pos250":0.045918367346938806,"ind_pos":0.044064315476201495},{"code":"002785","name":"万里石","industry":"建筑材料","score":60.0,"close":30.06,"ret":0.034767641996557686,"ret5":-0.12463599301106598,"pos250":0.041520056298381416,"ind_pos":0.22054123330242012},{"code":"002829","name":"星网宇达","industry":"国防军工","score":67.0,"close":15.91,"ret":0.05224867724867721,"ret5":-0.15010683760683752,"pos250":0.05719733079122972,"ind_pos":0.06665570852806585},{"code":"002965","name":"祥鑫科技","industry":"汽车","score":64.0,"close":23.16,"ret":0.035315154224407674,"ret5":-0.12405446293494704,"pos250":0.026101599775470104,"ind_pos":0.044064315476201495},{"code":"300850","name":"新强联","industry":"电力设备","score":65.0,"close":25.04,"ret":0.01540957015409572,"ret5":-0.18356700358656675,"pos250":0.08359046283309958,"ind_pos":0.0067992219424830545},{"code":"300969","name":"恒帅股份","industry":"汽车","score":46.0,"close":61.15,"ret":0.02086811352253748,"ret5":-0.15398450470392921,"pos250":0.013608428446005242,"ind_pos":0.044064315476201495},{"code":"301053","name":"远信工业","industry":"机械设备","score":63.0,"close":25.14,"ret":0.0,"ret5":-0.2542272322752892,"pos250":0.03880789022298461,"ind_pos":0.03859870866648299},{"code":"600141","name":"兴发集团","industry":"基础化工","score":47.0,"close":22.99,"ret":0.015011037527593807,"ret5":-0.15787545787545798,"pos250":0.017949603037625116,"ind_pos":0.11618261329438964},{"code":"603668","name":"天马科技","industry":"农林牧渔","score":91.0,"close":7.55,"ret":0.10058309037900859,"ret5":-0.2782026768642448,"pos250":0.0547302580140735,"ind_pos":0.3567467220947069},{"code":"603997","name":"继峰股份","industry":"汽车","score":84.0,"close":11.62,"ret":0.03105590062111796,"ret5":-0.13283582089552248,"pos250":0.12348178137651812,"ind_pos":0.044064315476201495},{"code":"605196","name":"华通线缆","industry":"电力设备","score":50.0,"close":28.9,"ret":0.008374040474528943,"ret5":-0.1295180722891568,"pos250":0.16919328641039522,"ind_pos":0.0067992219424830545}],"message":"【A股低位反转·每日选股】2026-10-16\n市场：弱势（等权20日线下、60日线下，宽度22%）\n\n入选 3 只（评分≥50、成交额排序、同行业最多1只）：\n1. 大金重工 002487｜电力设备｜35.79 (+1.3%)\n   5日-18.2%｜250分位6%｜行业位置1%｜RSI6 33｜评分67｜成交额26.5亿\n   买：明日开盘；止损 35.07（-2%）；止盈 37.22（+4%）；T+2了结\n2. 美诺华 603538｜医药生物｜23.85 (+2.3%)\n   5日-16.2%｜250分位9%｜行业位置32%｜RSI6 32｜评分52｜成交额8.9亿\n   买：明日开盘；止损 23.37（-2%）；止盈 24.80（+4%）；T+2了结\n3. 顺灏股份 002565｜轻工制造｜8.03 (+2.7%)\n   5日-14.9%｜250分位9%｜行业位置24%｜RSI6 35｜评分64｜成交额8.7亿\n   买：明日开盘；止损 7.87（-2%）；止盈 8.35（+4%）；T+2了结\n\n观察/剔除：华峰化学(63)、南方精工(61)、万里石(60)、星网宇达(67)、祥鑫科技(64)、新强联(65)\n\n风险：开盘涨停/高开>5%放弃；跌停无法卖出；负面公告需自查；不构成投资建议。"};window.__HISTORY__={"stats":{"total":1.8528237761747555,"cagr":0.24741199418250792,"dd":-0.19062747423091486,"batches":348,"win":0.5114942528735632,"avg":0.0032623801298093283,"trades":1306,"win_trade":0.45252679938744256,"avg_trade":0.0028884976306237722,"pf":1.2589251822471317,"yearly":{"2022":0.04832843850654078,"2023":0.16699378889741112,"2024":0.26043770456449766,"2025":0.32046002984660205,"2026":0.40107823847692003}},"equity":[["2022-01-31",0.9967],["2022-02-28",1.0098],["2022-03-31",0.9792],["2022-04-30",0.8886],["2022-05-31",0.9256],["2022-06-30",0.9565],["2022-07-31",0.8942],["2022-08-31",0.8748],["2022-09-30",0.9583],["2022-10-31",0.9563],["2022-11-30",1.0534],["2022-12-31",1.0483],["2023-01-31",1.0671],["2023-02-28",1.0827],["2023-03-31",1.0309],["2023-04-30",1.0793],["2023-05-31",1.0054],["2023-06-30",1.0435],["2023-07-31",1.0197],["2023-08-31",1.078],["2023-09-30",1.1043],["2023-10-31",1.2097],["2023-11-30",1.2962],["2023-12-31",1.2234],["2024-01-31",1.2258],["2024-02-29",1.3299],["2024-03-31",1.3003],["2024-04-30",1.3328],["2024-05-31",1.4248],["2024-06-30",1.5136],["2024-07-31",1.4356],["2024-08-31",1.4422],["2024-09-30",1.4579],["2024-10-31",1.4365],["2024-11-30",1.5771],["2024-12-31",1.542],["2025-01-31",1.5488],["2025-02-28",1.6795],["2025-03-31",1.6134],["2025-04-30",1.6878],["2025-05-31",1.9083],["2025-06-30",2.1114],["2025-07-31",2.1191],["2025-08-31",2.0938],["2025-09-30",2.0472],["2025-10-31",2.0016],["2025-11-30",1.9621],["2025-12-31",2.0362],["2026-02-28",2.1928],["2026-03-31",2.3534],["2026-04-30",2.3378],["2026-05-31",2.3542],["2026-06-30",2.3216],["2026-07-31",2.2638],["2026-08-31",2.5925],["2026-09-30",2.7295],["2026-10-31",2.8528]],"recent":[{"date":"2026-09-30","code":"002625","name":"光启技术","industry":"国防军工","ret_pct":-2.225},{"date":"2026-09-30","code":"603039","name":"泛微网络","industry":"计算机","ret_pct":-2.225},{"date":"2026-10-08","code":"300756","name":"金马游乐","industry":"机械设备","ret_pct":3.775},{"date":"2026-10-08","code":"300321","name":"同大股份","industry":"基础化工","ret_pct":3.775},{"date":"2026-10-09","code":"300316","name":"晶盛机电","industry":"电力设备","ret_pct":-2.225},{"date":"2026-10-09","code":"300077","name":"国民技术","industry":"电子","ret_pct":-2.225},{"date":"2026-10-09","code":"603119","name":"浙江荣泰","industry":"汽车","ret_pct":-2.225},{"date":"2026-10-12","code":"300260","name":"新莱应材","industry":"机械设备","ret_pct":-2.225},{"date":"2026-10-12","code":"600418","name":"江淮汽车","industry":"汽车","ret_pct":3.775},{"date":"2026-10-12","code":"301421","name":"波长光电","industry":"电子","ret_pct":-2.04018151815182},{"date":"2026-10-13","code":"300395","name":"菲利华","industry":"国防军工","ret_pct":-2.225},{"date":"2026-10-13","code":"603986","name":"兆易创新","industry":"电子","ret_pct":-2.225},{"date":"2026-10-13","code":"300260","name":"新莱应材","industry":"机械设备","ret_pct":-2.225},{"date":"2026-10-14","code":"600363","name":"联创光电","industry":"电子","ret_pct":3.775},{"date":"2026-10-14","code":"002881","name":"美格智能","industry":"通信","ret_pct":-2.225}],"live":[{"signal_date":"2026-10-16","code":"002487","name":"大金重工","industry":"电力设备","close":35.79,"score":67.0},{"signal_date":"2026-10-16","code":"603538","name":"美诺华","industry":"医药生物","close":23.85,"score":52.0},{"signal_date":"2026-10-16","code":"002565","name":"顺灏股份","industry":"轻工制造","close":8.03,"score":64.0}]};</script>
 <h1>低位反转 · 每日看板</h1>
 <div class="sub" id="sub">加载中…</div>
 <div class="top" id="top"></div>
+<div class="plan" id="plan" style="display:none"></div>
 <div id="cards"></div>
-<h3 style="margin:16px 0 8px;font-size:15px">观察/备选</h3>
+<h3>观察/备选</h3>
 <table id="watch"></table>
-<h3 style="margin:16px 0 8px;font-size:15px">历史买卖收益（策略回测）</h3>
+<h3>历史买卖收益（策略回测，含成本）</h3>
 <div class="top" id="hstats"></div>
-<div id="heq" style="background:#fff;border-radius:10px;padding:8px;margin-bottom:10px"></div>
+<div id="heq" style="background:#fff;border-radius:10px;padding:6px"></div>
 <table id="htrades"></table>
 <div class="foot">
- 规则：次日开盘买（涨停/高开>5% 放弃）→ T+2 日 +4% 止盈 / -2% 止损 / 收盘了结；单票 15%-20%，总仓位 ≤80%。<br>
- 行情：东方财富 JSONP（浏览器直连）；本页面仅供研究，不构成投资建议。
+ 规则：信号日收盘后选出 → 下一交易日 9:30 开盘买（涨停/高开>5% 放弃）→ T+2 日 +4% 止盈 / -2% 止损 / 收盘了结；单票 15%-20%，总仓位 ≤80%。<br>
+ 行情：东方财富 JSONP（浏览器直连，失败自动显示昨收）；本页面仅供研究，不构成投资建议。
 </div>
 <script>
-const qCache = {};
+var EMBED = window.__PICKS__ || null;
+var EMBED_HIST = window.__HISTORY__ || null;
+var qCache = {};
+
+function nextTradingDay(dstr, n) {
+  var d = new Date(dstr + "T00:00:00");
+  var c = 0;
+  while (c < n) {
+    d.setDate(d.getDate() + 1);
+    if (d.getDay() !== 0 && d.getDay() !== 6) c++;
+  }
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+
 function jsonpQuote(code, cb) {
-  const secid = (code.startsWith("60") || code.startsWith("68") ? "1." : "0.") + code;
-  const name = "cb_" + code + "_" + Math.floor(Math.random()*1e6);
+  var secid = (code.indexOf("60")===0 || code.indexOf("68")===0 ? "1." : "0.") + code;
+  var name = "cb_" + code + "_" + Math.floor(Math.random()*1e6);
+  var script = document.createElement("script");
   window[name] = function (obj) {
     try {
-      const d = obj && obj.data;
-      if (d) cb({price:d.f43/100, open:d.f46/100, high:d.f44/100, low:d.f45/100,
-                 prev:d.f60/100, pct:d.f170/100});
+      var d = obj && obj.data;
+      if (d && d.f43) cb({price:d.f43/100, open:d.f46/100, high:d.f44/100, low:d.f45/100,
+                          prev:d.f60/100, pct:d.f170/100});
+      else cb(null);
     } catch(e) { cb(null); }
     delete window[name];
-    script.remove();
+    try { script.remove(); } catch(e) {}
   };
-  const script = document.createElement("script");
-  script.src = `https://push2.eastmoney.com/api/qt/stock/get?secid=${secid}&fields=f43,f44,f45,f46,f60,f170&cb=${name}`;
-  script.onerror = () => { cb(null); script.remove(); };
+  script.src = "https://push2.eastmoney.com/api/qt/stock/get?secid=" + secid + "&fields=f43,f44,f45,f46,f60,f170&cb=" + name;
+  script.onerror = function(){ cb(null); try{script.remove();}catch(e){} };
   document.body.appendChild(script);
 }
-function fmt(x){ return (x||x===0) ? x.toFixed(2) : "—"; }
-function statusOf(p, q, now){
-  const base = p.close;
-  if (!q || !q.open) return ["待行情","gray"];
-  const lim = (p.code.startsWith("300")||p.code.startsWith("301")) ? 0.195 : 0.098;
-  const gap = q.prev ? q.open/q.prev-1 : 0;
-  if (gap >= lim-0.005) return ["开盘涨停·放弃","red"];
-  if (gap > 0.05) return ["高开>5%·放弃","orange"];
-  const entry = q.open, stop = entry*0.98, target = entry*1.04, cur = q.price;
-  if (cur <= stop) return ["已触止损","red"];
-  if (cur >= target) return ["已触止盈","green"];
-  return ["可买/持有","blue"];
+
+function fmt(x){ return (x||x===0) ? Number(x).toFixed(2) : "—"; }
+
+function statusOf(p, q) {
+  if (!q || !q.open) return ["待行情", "gray"];
+  var lim = (p.code.indexOf("300")===0 || p.code.indexOf("301")===0) ? 0.195 : 0.098;
+  var gap = q.prev ? q.open/q.prev - 1 : 0;
+  if (gap >= lim - 0.005) return ["开盘涨停·放弃", "red"];
+  if (gap > 0.05) return ["高开>5%·放弃", "orange"];
+  var entry = q.open;
+  if (q.price <= entry*0.98) return ["已触止损", "red"];
+  if (q.price >= entry*1.04) return ["已触止盈", "green"];
+  return ["可买/持有", "blue"];
 }
-async function load(){
-  try {
-    const r = await fetch("./data/latest.json?t=" + Date.now(), {cache:"no-store"});
-    if (!r.ok) throw new Error("no data");
-    const data = await r.json();
-    const picks = data.picks || [], watch = data.watch || [], mkt = data.market || {};
-    document.getElementById("sub").textContent =
-      `信号日期 ${data.date||"—"}｜更新 ${new Date().toLocaleString("zh-CN")}｜数据每分钟自动刷新`;
-    const st = mkt.state || "—";
-    document.getElementById("top").innerHTML = `
-      <div class="pill">市场状态 <b class="${st==='强势'?'ok':'weak'}">${st}</b>（宽度 ${((mkt.breadth||0)*100).toFixed(0)}%）</div>
-      <div class="pill">今日推荐 <b>${picks.length}</b> 只</div>
-      <div class="pill">策略：5日跌>12% + 收阳 + 低位</div>`;
-    const cards = [];
-    for (let i=0;i<picks.length;i++){
-      const p = picks[i], q = qCache[p.code] || null;
-      const [status, color] = statusOf(p,q);
-      const entry = q && q.open ? q.open : p.close;
-      const stop = entry*0.98, target = entry*1.04;
-      const cur = q ? q.price : p.close;
-      const pct = q ? q.pct*100 : p.ret*100;
-      cards.push(`<div class="card">
-        <div class="rank">${i+1}</div>
-        <div class="head"><span class="name">${p.name}</span><span class="code">${p.code}</span>
-          <span class="tag">${p.industry||""}</span><span class="status ${color}">${status}</span></div>
-        <div class="line">${q?`开盘 ${fmt(q.open)}｜现价 ${fmt(cur)}（${pct>=0?'+':''}${pct.toFixed(1)}%）`:`昨收 ${fmt(p.close)}（${p.ret>=0?'+':''}${(p.ret*100).toFixed(1)}%）｜实时行情加载中`}</div>
-        <div class="levels">
-          <span>买入参考 <b>${fmt(entry)}</b></span>
-          <span class="stop">止损 <b>${fmt(stop)}</b>（-2%）</span>
-          <span class="target">止盈 <b>${fmt(target)}</b>（+4%）</span>
-        </div>
-        <div class="meta">5日 ${(p.ret5*100).toFixed(1)}%｜250分位 ${(p.pos250*100).toFixed(0)}%｜行业位置 ${(p.ind_pos*100).toFixed(0)}%｜RSI6 ${(p.rsi6||0).toFixed(0)}｜评分 ${(p.score||0).toFixed(0)}｜成交额 ${((p.amount||0)/1e8).toFixed(1)}亿</div>
-      </div>`);
-    }
-    document.getElementById("cards").innerHTML = cards.join("") || '<div class="card">今日无符合条件标的，空仓。</div>';
-    let rows = "<tr><th>名称</th><th>代码</th><th>行业</th><th>评分</th><th>昨收</th><th>今日</th></tr>";
-    for (const w of watch.slice(0,10)){
-      const q = qCache[w.code];
-      rows += `<tr><td>${w.name||""}</td><td>${w.code||""}</td><td>${w.industry||""}</td>
-        <td>${(w.score||0).toFixed(0)}</td><td>${fmt(w.close)}</td>
-        <td>${q?((q.pct*100>=0?'+':'')+(q.pct*100).toFixed(1)+'%'):'—'}</td></tr>`;
-    }
-    document.getElementById("watch").innerHTML = rows;
-    // 实时行情
-    picks.concat(watch.slice(0,10)).forEach(o => {
-      if (!o || !o.code) return;
-      jsonpQuote(o.code, q => { qCache[o.code] = q; });
-    });
-    setTimeout(load, 60000);
-  } catch(e) {
-    document.getElementById("sub").textContent = "数据加载失败：" + (e && e.message ? e.message : "请刷新重试");
+
+function render(data) {
+  var picks = data.picks || [], watch = data.watch || [], mkt = data.market || {};
+  var sd = data.date || "";
+  var buyDate = sd ? nextTradingDay(sd, 1) : "—";
+  var exitDate = sd ? nextTradingDay(sd, 2) : "—";
+  document.getElementById("sub").textContent =
+    "信号日期 " + sd + "｜开仓 " + buyDate + " 9:30｜了结 " + exitDate + "｜更新 " + new Date().toLocaleString("zh-CN");
+  var st = mkt.state || "—";
+  document.getElementById("top").innerHTML =
+    '<div class="pill">市场 <b class="' + (st==="强势"?"ok":"weak") + '">' + st + '</b>（宽度 ' + ((mkt.breadth||0)*100).toFixed(0) + '%）</div>' +
+    '<div class="pill">今日推荐 <b>' + picks.length + '</b> 只</div>';
+  document.getElementById("plan").style.display = "block";
+  document.getElementById("plan").innerHTML =
+    "开仓计划：<b>" + buyDate + "（下一交易日）9:30 集合竞价/开盘买入</b>；" +
+    "放弃条件：开盘涨停或高开>5%；止损 -2%，止盈 +4%；" +
+    "<b>" + exitDate + " T+2 了结</b>；单票 15%-20%。";
+
+  var cards = "";
+  for (var i=0;i<picks.length;i++){
+    var p = picks[i], q = qCache[p.code] || null;
+    var s = statusOf(p,q);
+    var entry = (q && q.open) ? q.open : p.close;
+    var stop = entry*0.98, target = entry*1.04;
+    var cur = q ? q.price : p.close;
+    var pct = q ? q.pct : (p.ret||0)*100;
+    var retTxt = q ? ("本次收益 " + ((cur/entry-1)>=0?"+":"") + ((cur/entry-1)*100).toFixed(2) + "%") : "待开盘";
+    var line = q ? ("开盘 " + fmt(q.open) + "｜现价 " + fmt(cur) + "（" + (pct>=0?"+":"") + pct.toFixed(1) + "%）")
+                 : ("昨收 " + fmt(p.close) + "（" + ((p.ret||0)*100>=0?"+":"") + ((p.ret||0)*100).toFixed(1) + "%）｜实时行情加载中");
+    cards += '<div class="card"><div class="rank">' + (i+1) + '</div>' +
+      '<div class="head"><span class="name">' + p.name + '</span><span class="code">' + p.code + '</span>' +
+      '<span class="tag">' + (p.industry||"") + '</span><span class="status ' + s[1] + '">' + s[0] + '</span></div>' +
+      '<div class="line">' + line + '</div>' +
+      '<div class="levels"><span>买入参考 <b>' + fmt(entry) + '</b></span>' +
+      '<span class="stop">止损 <b>' + fmt(stop) + '</b>（-2%）</span>' +
+      '<span class="target">止盈 <b>' + fmt(target) + '</b>（+4%）</span></div>' +
+      '<div class="ret" style="color:' + (q && cur>=entry ? "#b91c1c" : "#15803d") + '">' + retTxt + '</div>' +
+      '<div class="meta">5日 ' + ((p.ret5||0)*100).toFixed(1) + '%｜250分位 ' + ((p.pos250||0)*100).toFixed(0) +
+      '%｜行业位置 ' + ((p.ind_pos||0)*100).toFixed(0) + '%｜RSI6 ' + (p.rsi6||0).toFixed(0) +
+      '｜评分 ' + (p.score||0).toFixed(0) + '｜成交额 ' + ((p.amount||0)/1e8).toFixed(1) + '亿</div></div>';
   }
+  document.getElementById("cards").innerHTML = cards || '<div class="card">今日无符合条件标的，空仓。</div>';
+
+  var rows = "<tr><th>名称</th><th>代码</th><th>行业</th><th>评分</th><th>昨收</th><th>今日</th></tr>";
+  for (var j=0;j<Math.min(watch.length,10);j++){
+    var w = watch[j], wq = qCache[w.code];
+    rows += "<tr><td>" + (w.name||"") + "</td><td>" + (w.code||"") + "</td><td>" + (w.industry||"") + "</td><td>" +
+      (w.score||0).toFixed(0) + "</td><td>" + fmt(w.close) + "</td><td>" +
+      (wq ? ((wq.pct>=0?"+":"") + wq.pct.toFixed(1) + "%") : "—") + "</td></tr>";
+  }
+  document.getElementById("watch").innerHTML = rows;
 }
 
-async function loadHistory(){
-  try{
-    const r = await fetch("./data/history.json?t=" + Date.now(), {cache:"no-store"});
-    if(!r.ok) return;
-    const h = await r.json(), st = h.stats || {};
-    document.getElementById("hstats").innerHTML = `
-      <div class="pill">总收益 <b>+${(st.total*100).toFixed(1)}%</b></div>
-      <div class="pill">年化 <b>${(st.cagr*100).toFixed(1)}%</b></div>
-      <div class="pill">最大回撤 <b>${(st.dd*100).toFixed(1)}%</b></div>
-      <div class="pill">批次胜率 <b>${(st.win*100).toFixed(0)}%</b></div>
-      <div class="pill">交易 <b>${st.trades||0}</b> 笔</div>`;
-    const eq = h.equity || [];
-    if(eq.length > 1){
-      const vals = eq.map(x=>x[1]), mn=Math.min(...vals), mx=Math.max(...vals), w=760,hgt=150;
-      const pts = vals.map((v,i)=>`${(i/(vals.length-1)*w).toFixed(1)},${(hgt-(v-mn)/((mx-mn)||1)*(hgt-16)-8).toFixed(1)}`).join(" ");
-      document.getElementById("heq").innerHTML =
-        `<svg viewBox="0 0 ${w} ${hgt}" preserveAspectRatio="none" style="width:100%;height:150px">`+
-        `<polyline points="${pts}" fill="none" stroke="#1f3b73" stroke-width="2"/></svg>`;
-    }
-    let rows = "<tr><th>信号日</th><th>名称</th><th>代码</th><th>行业</th><th>单笔收益</th></tr>";
-    for(const t of (h.recent||[]).slice(-12).reverse()){
-      const c = (t.ret_pct||0) >= 0 ? "#b91c1c" : "#15803d";
-      rows += `<tr><td>${t.date||""}</td><td>${t.name||""}</td><td>${t.code||""}</td><td>${t.industry||""}</td><td style="color:${c}">${(t.ret_pct||0).toFixed(2)}%</td></tr>`;
-    }
-    document.getElementById("htrades").innerHTML = rows;
-  }catch(e){}
+function loadHistory(h) {
+  var st = (h && h.stats) || {};
+  if (st.total === undefined) return;
+  document.getElementById("hstats").innerHTML =
+    '<div class="pill">总收益 <b>+' + (st.total*100).toFixed(1) + '%</b></div>' +
+    '<div class="pill">年化 <b>' + (st.cagr*100).toFixed(1) + '%</b></div>' +
+    '<div class="pill">最大回撤 <b>' + (st.dd*100).toFixed(1) + '%</b></div>' +
+    '<div class="pill">批次胜率 <b>' + (st.win*100).toFixed(0) + '%</b></div>' +
+    '<div class="pill">交易 <b>' + (st.trades||0) + '</b> 笔（单笔均 ' + ((st.avg_trade||0)*100).toFixed(2) + '%）</div>';
+  var eq = h.equity || [];
+  if (eq.length > 1) {
+    var vals = eq.map(function(x){return x[1];});
+    var mn = Math.min.apply(null,vals), mx = Math.max.apply(null,vals), w=760, ht=150;
+    var pts = vals.map(function(v,i){ return (i/(vals.length-1)*w).toFixed(1)+","+(ht-(v-mn)/((mx-mn)||1)*(ht-16)-8).toFixed(1); }).join(" ");
+    document.getElementById("heq").innerHTML = '<svg viewBox="0 0 '+w+' '+ht+'" preserveAspectRatio="none" style="width:100%;height:150px"><polyline points="'+pts+'" fill="none" stroke="#1f3b73" stroke-width="2"/></svg>';
+  }
+  var rows = "<tr><th>信号日</th><th>名称</th><th>代码</th><th>行业</th><th>单笔收益</th></tr>";
+  var rec = (h.recent||[]).slice(-12).reverse();
+  for (var i=0;i<rec.length;i++){
+    var t = rec[i], v = t.ret_pct||0;
+    rows += "<tr><td>" + (t.date||"") + "</td><td>" + (t.name||"") + "</td><td>" + (t.code||"") + "</td><td>" + (t.industry||"") + "</td><td style='color:" + (v>=0?"#b91c1c":"#15803d") + "'>" + v.toFixed(2) + "%</td></tr>";
+  }
+  document.getElementById("htrades").innerHTML = rows;
 }
-loadHistory();
 
-load();
+function loadQuotes(data) {
+  var list = (data.picks||[]).concat((data.watch||[]).slice(0,10));
+  list.forEach(function(o){
+    if (!o || !o.code) return;
+    jsonpQuote(o.code, function(q){ qCache[o.code]=q; });
+  });
+}
+
+async function boot(){
+  var data = EMBED, hist = EMBED_HIST;
+  if (!data) {
+    try {
+      var r = await fetch("./data/latest.json?t=" + Date.now(), {cache:"no-store"});
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      data = await r.json();
+    } catch(e) {
+      document.getElementById("sub").textContent = "数据加载失败：" + (e && e.message ? e.message : "请刷新重试");
+      return;
+    }
+  }
+  render(data);
+  loadQuotes(data);
+  setTimeout(function(){ render(data); }, 2500);
+  setTimeout(function(){ render(data); }, 6000);
+  if (!hist) {
+    try {
+      var rh = await fetch("./data/history.json?t=" + Date.now(), {cache:"no-store"});
+      if (rh.ok) hist = await rh.json();
+    } catch(e) {}
+  }
+  loadHistory(hist);
+  setTimeout(boot, 60000);
+}
+boot();
 </script>
 </body>
 </html>
